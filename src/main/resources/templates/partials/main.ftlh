@@ -20,17 +20,33 @@
     <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="/">Главная</a>
-            <ul id="ulist" class="navbar-nav nav ">
 
-                    <div></div>
-
-            </ul>
             <div class="collapse navbar-collapse justify-content-end">
                 <ul class="nav">
-                        <li class="nav-item mr-2 form-inline">
-                            <input type="search" id="search-input" class="form-control " placeholder="Поиск"/>
-                            <button class="btn btn-outline-light ml-1" id="btn-search" onclick="search()">Поиск</button>
-                        </li>
+                    <li class="nav-item mr-2 form-inline">
+                        <input type="search" id="search-input" class="form-control " placeholder="Поиск"/>
+                        <button class="btn btn-outline-light ml-1" id="btn-search" onclick="search()">Поиск</button>
+                    </li>
+                    <#if user??>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Hello, User</a>
+                                <div class="dropdown-menu">
+                                    <form class="flex box-128" action="/logout" method="post">
+                                        <#if _csrf??>
+                                            <input type="hidden" name="${(_csrf.parameterName)!'csrf'}"
+                                                   value="${(_csrf.token)!'--no-token--'}"/>
+                                        </#if>
+                                        <button class="btn btn-outline-light ">Logout</button>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/addPlace" role="button" aria-haspopup="true"
+                                   aria-expanded="false">Add new place</a>
+                            </li>
+
+                      <#else>
                         <li class="nav-item">
                             <form class="flex box-128" action="/login" method="get">
                                 <#if _csrf??>
@@ -49,19 +65,20 @@
                             <button class="btn btn-outline-light ">Sign up</button>
                         </form>
                     </li>
+                    </#if>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-                    class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
-        </div>
+<#--    <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">-->
+<#--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
+<#--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span-->
+<#--                    class="navbar-toggler-icon"></span></button>-->
+<#--        <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">-->
+<#--        </div>-->
 
-    </nav>
+<#--    </nav>-->
 
     <div class="container">
         <#nested>

@@ -1,4 +1,4 @@
-<div  id="pagination">
+<div  id="pagination" class="pagination-row">
     <#if hasPrev>
         <a id="loadPrev" class="btn btn-outline-primary" href="${prevPageLink!''}">&lt;&lt;&lt;Назад</a>
     <#else>

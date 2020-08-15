@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -43,11 +44,18 @@ public class FrontendController {
     }
 
     @GetMapping("/")
-    public String mainPage(Model model, Pageable pageable, HttpServletRequest uriBuilder) {
-       var place = placeService.findAllPlace(pageable);
+    public String mainPage(Model model, Pageable pageable, HttpServletRequest uriBuilder, Principal principal) {
+        var place = placeService.findAllPlace(pageable);
         var uri = uriBuilder.getRequestURI();
         var placeModel = model.addAttribute("place", placeService.findAll());
-        PageableExample.constructPageable(place,propService.getDefaultPageSize(),placeModel,uri);
+        PageableExample.constructPageable(place, propService.getDefaultPageSize(), placeModel, uri);
+
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            model.addAttribute("review", reviewRepository.findAll());
+            return "index";
+        }
         model.addAttribute("review", reviewRepository.findAll());
         return "index";
     }
@@ -62,8 +70,15 @@ public class FrontendController {
                              @RequestParam("password") String password) {
 
         String user = userService.addUser(name, email, password);
-
         return "redirect:/login";
     }
+
+    @GetMapping("/addPlace")
+    public String addPlace(Model model, Principal principal) {
+        String user = principal.getName();
+        model.addAttribute("user", user);
+        return "addPlace";
+    }
+
 
 }

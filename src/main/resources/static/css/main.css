@@ -65,3 +65,37 @@
 .photos-size {
     margin: 0;
 }
+
+.pagination-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pagination-row span {
+    margin: 0 10px;
+}
+.add-form {
+    width: 100%!important;
+}
+
+.add-form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.add-form-row p {
+    margin: 0;
+    width: 50%;
+    font-size: 30px;
+}
+
+.add-form-row input,
+.add-form-row textarea {
+    width: 50%;
+}
+
+.add-form-button {
+    display: table;
+    margin: 40px auto;
+}
