@@ -1,0 +1,2 @@
+insert into users(active, email, full_name, password) VALUES (1,'user@gmail.com','user','$2a$12$UzIcLA9OToBxsfsNXw/a7.f4Ot1vLjH91UI841dfgXWnno8cMSTVK');
+insert into user_role(user_id, roles) VALUES (1,'USER');
