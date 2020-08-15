@@ -1,17 +1,17 @@
 insert into places(id, name, photo, description)
-VALUES (1, 'CafeDeParis', '/images/cafeDeParis.png','Good cafe in Bishkek');
+VALUES (1, 'CafeDeParis', 'cafeDeParis.png','Good cafe in Bishkek');
 
 insert into places(id, name, photo, description)
-VALUES (2, 'Navigator','/images/navigator.jpg', 'Nice place');
+VALUES (2, 'Navigator','navigator.jpg', 'Nice place');
 
 insert into places(id, name, photo, description)
-VALUES (3, 'Kaynar','/images/kaynar.jpg', 'Perfect');
+VALUES (3, 'Kaynar','kaynar.jpg', 'Perfect');
 
 insert into places(id, name, photo, description)
-VALUES (4, 'Kent', '/images/kent.jpg','Place for friends');
+VALUES (4, 'Kent', 'kent.jpg','Place for friends');
 
 insert into places(id, name, photo, description)
-VALUES (5, 'Social', '/images/social.jpg','Very good cafe');
+VALUES (5, 'Social', 'social.jpg','Very good cafe');
 
 
 

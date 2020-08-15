@@ -2,7 +2,7 @@
 
 <@main.renderWith>
     <h3 class="mb-3" id="add-category-header" style="text-align: center">Add new place</h3>
-    <form action="addPlace" method="post" class="">
+    <form action="addPlace" method="post" class="" enctype="multipart/form-data">
             <#if _csrf??>
                 <input type="hidden" name="${(_csrf.parameterName)!'csrf'}" value="${(_csrf.token)!'--no-token--'}"></input>
             </#if>

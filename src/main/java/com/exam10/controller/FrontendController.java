@@ -19,8 +19,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -80,5 +84,16 @@ public class FrontendController {
         return "addPlace";
     }
 
+    @PostMapping("/addPlace")
+    public String addPlace(@RequestParam("name") String name, @RequestParam("description") String description,
+                             @RequestParam("photo") MultipartFile photo) throws IOException {
+        File photoFile = new File("src/main/resources/static/images/" + photo.getOriginalFilename());
+        FileOutputStream os = new FileOutputStream(photoFile);
+        os.write(photo.getBytes());
+        os.close();
 
+        String place = placeService.addPlace(name, description, photo.getOriginalFilename());
+
+        return "redirect:/";
+    }
 }
