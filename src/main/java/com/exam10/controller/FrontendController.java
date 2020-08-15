@@ -1,11 +1,9 @@
 package com.exam10.controller;
 
 
-import com.exam10.DTO.GalleryDTO;
-import com.exam10.model.Gallery;
+
+
 import com.exam10.model.PageableExample;
-import com.exam10.model.Review;
-import com.exam10.model.User;
 import com.exam10.repository.PlaceRepository;
 import com.exam10.repository.ReviewRepository;
 import com.exam10.repository.UserRepository;
@@ -15,7 +13,6 @@ import com.exam10.service.PropertiesService;
 import com.exam10.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +23,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
+
 
 
 @Controller
@@ -111,10 +108,8 @@ public class FrontendController {
             model.addAttribute("review", review);
             return "pagePlace";
         }
-//        String user = principal.getName();
         model.addAttribute("place", place);
         model.addAttribute("review", review);
-//        model.addAttribute("user", user);
         return "pagePlace";
     }
     @GetMapping("/search/{search}")
