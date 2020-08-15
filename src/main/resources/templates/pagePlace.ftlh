@@ -41,7 +41,7 @@
 
                         <span>5.0</span>
                     </div>
-
+                     <#if user??>
                     <form action="">
                         <div class="add-review-field">
                             <h5>Add review:</h5>
@@ -63,13 +63,18 @@
 
                         </div>
                     </form>
+                     </#if>
 
-                    <form action="" class="upload-images">
-                        <p>Upload new photo</p>
-                        <label for="uploadId">Choose file</label>
-                        <input type="file" id="uploadId"/>
-                        <button class="btn btn-outline-primary" type="submit">Submit</button>
-                    </form>
+                     <#if user??>
+                        <form action="addMoreImages" method="post" class="upload-images" enctype="multipart/form-data">
+                            <input name="placeId" value="${place.id}"/>
+                            <p>Upload new photo</p>
+                            <label for="uploadId">Choose file</label>
+                            <input type="file" id="uploadId" name="image" required="required" value=""/>
+                            <button class="btn btn-outline-primary" type="submit">Submit</button>
+                        </form>
+                     </#if>
+
                 </div>
             </div>
         </div>

@@ -1,12 +1,15 @@
 package com.exam10.controller;
 
 
+import com.exam10.DTO.GalleryDTO;
+import com.exam10.model.Gallery;
 import com.exam10.model.PageableExample;
 import com.exam10.model.Review;
 import com.exam10.model.User;
 import com.exam10.repository.PlaceRepository;
 import com.exam10.repository.ReviewRepository;
 import com.exam10.repository.UserRepository;
+import com.exam10.service.GalleryService;
 import com.exam10.service.PlaceService;
 import com.exam10.service.PropertiesService;
 import com.exam10.service.UserService;
@@ -36,6 +39,7 @@ public class FrontendController {
     private final UserService userService;
     private PlaceService placeService;
     private PropertiesService propService;
+    private GalleryService galleryService;
 
 
     @GetMapping("/login")
@@ -99,10 +103,18 @@ public class FrontendController {
 
         var place = placeRepository.findById(id);
         var review = reviewRepository.findAll();
-        String user = principal.getName();
+
+        if (principal != null) {
+            String user = principal.getName();
+            model.addAttribute("user", user);
+            model.addAttribute("place", place);
+            model.addAttribute("review", review);
+            return "index";
+        }
+//        String user = principal.getName();
         model.addAttribute("place", place);
         model.addAttribute("review", review);
-        model.addAttribute("user", user);
+//        model.addAttribute("user", user);
         return "pagePlace";
     }
     @GetMapping("/search/{search}")
@@ -114,5 +126,19 @@ public class FrontendController {
         model.addAttribute("review", reviewRepository.findAll());
 
         return "index";
+    }
+
+    @PostMapping("/addMoreImages")
+    public String addMoreImages(@RequestParam("placeId") int placeId, @RequestParam("image") MultipartFile image)
+            throws IOException {
+        File photoFile = new File("src/main/resources/static/images/" + image.getOriginalFilename());
+        FileOutputStream os = new FileOutputStream(photoFile);
+        os.write(image.getBytes());
+        os.close();
+
+      var place = placeRepository.findById(placeId);
+        String imageData = galleryService.addImages(place, image.getOriginalFilename());
+
+        return "redirect:/";
     }
 }

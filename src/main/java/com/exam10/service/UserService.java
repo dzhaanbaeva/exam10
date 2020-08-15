@@ -1,6 +1,6 @@
 package com.exam10.service;
 
-import com.exam10.model.Role;
+
 import com.exam10.model.User;
 import com.exam10.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -10,9 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @Service
 @AllArgsConstructor
