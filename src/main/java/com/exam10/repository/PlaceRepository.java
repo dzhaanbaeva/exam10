@@ -8,4 +8,5 @@ import java.util.List;
 public interface PlaceRepository extends JpaRepository<Place, Integer> {
     List<Place> findAll();
     boolean existsByName(String name);
+    Place findById(int id);
 }

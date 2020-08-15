@@ -16,9 +16,9 @@
     margin: 30px 15px;
     padding: 10px;
     border-radius: 2px;
-    -webkit-box-shadow: 0px 9px 15px -5px rgba(0,0,0,0.61);
-    -moz-box-shadow: 0px 9px 15px -5px rgba(0,0,0,0.61);
-    box-shadow: 0px 9px 15px -5px rgba(0,0,0,0.61);
+    -webkit-box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.61);
+    -moz-box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.61);
+    box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.61);
 }
 
 .place-img {
@@ -27,6 +27,7 @@
     height: 200px;
     border-radius: 4px;
 }
+
 .place-card h6 {
     margin: 10px 0 0;
 }
@@ -56,6 +57,7 @@
     align-items: center;
     margin: 15px 0 0;
 }
+
 .camera-img {
     width: 25px;
     height: 25px;
@@ -71,11 +73,13 @@
     justify-content: center;
     align-items: center;
 }
+
 .pagination-row span {
     margin: 0 10px;
 }
+
 .add-form {
-    width: 100%!important;
+    width: 100% !important;
 }
 
 .add-form-row {
@@ -98,4 +102,112 @@
 .add-form-button {
     display: table;
     margin: 40px auto;
+}
+
+
+.place-name {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.place-description {
+    text-align: center;
+    margin: 30px 0 0;
+}
+
+.place-rating-row {
+    padding: 15px 5px;
+}
+
+.rating-stars {
+    display: flex;
+}
+
+.place-rating-row {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.place-rating-row p {
+    margin: 0;
+    padding-right: 30px;
+}
+
+.rating-stars img {
+    margin-right: 5px;
+}
+
+.rating-stars span {
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.review-item {
+    margin: 15px 0;
+}
+h6 {
+    margin-top: 30px;
+}
+.review-head {
+    padding: 5px 0;
+}
+.review-head p {
+    margin: 0;
+}
+
+.review-stars {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.review-stars img {
+    margin-right: 5px;
+}
+
+.review-stars span {
+    margin-left: 30px;
+}
+
+.add-review-field {
+    margin-top: 30px;
+    padding-top: 10px;
+}
+
+.add-review-field h5 {
+    margin: 0;
+}
+
+.add-review-field textarea {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.add-review-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+}
+
+.add-review-options button {
+    min-width: 150px;
+}
+
+.add-review-options .select {
+    display: flex;
+    align-items: center;
+}
+.add-review-options label {
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.upload-images {
+    margin-top: 30px;
 }

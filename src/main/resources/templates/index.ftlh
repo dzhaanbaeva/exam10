@@ -7,7 +7,7 @@
     <#list place as p>
         <div class="place-card">
             <img class="place-img" src="${"http://localhost:9090/images/" + p.photo}" alt="#">
-            <a href=""><h6>${p.name}</h6></a>
+            <a href="http://localhost:9090/pagePlace/${p.id}"><h6>${p.name}</h6></a>
             <div class="start-icon-row">
                 <img class="star-icon" src="${"http://localhost:9090/images/star-icon.png"}" alt="">
                 <img class="star-icon" src="${"http://localhost:9090/images/star-icon.png"}" alt="">

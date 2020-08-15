@@ -15,10 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -95,5 +92,17 @@ public class FrontendController {
         String place = placeService.addPlace(name, description, photo.getOriginalFilename());
 
         return "redirect:/";
+    }
+
+    @GetMapping("/pagePlace/{id}")
+    public String pagePlace(@PathVariable("id") int id, Model model, Principal principal) {
+
+        var place = placeRepository.findById(id);
+        var review = reviewRepository.findAll();
+        String user = principal.getName();
+        model.addAttribute("place", place);
+        model.addAttribute("review", review);
+        model.addAttribute("user", user);
+        return "pagePlace";
     }
 }
