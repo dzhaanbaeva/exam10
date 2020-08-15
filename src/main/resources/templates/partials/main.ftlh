@@ -40,7 +40,15 @@
                                 <button class="btn btn-outline-light ">Log in</button>
                             </form>
                         </li>
-
+                    <li class="nav-item">
+                        <form class="flex box-128" action="/register" method="get">
+                            <#if _csrf??>
+                                <input type="hidden" name="${(_csrf.parameterName)!'csrf'}"
+                                       value="${(_csrf.token)!'--no-token--'}"/>
+                            </#if>
+                            <button class="btn btn-outline-light ">Sign up</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
