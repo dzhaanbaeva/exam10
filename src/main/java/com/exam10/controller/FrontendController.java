@@ -109,7 +109,7 @@ public class FrontendController {
             model.addAttribute("user", user);
             model.addAttribute("place", place);
             model.addAttribute("review", review);
-            return "index";
+            return "pagePlace";
         }
 //        String user = principal.getName();
         model.addAttribute("place", place);
