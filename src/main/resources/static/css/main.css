@@ -1,3 +1,67 @@
 .h2_for_css {
     text-align: center;
 }
+
+.main-places-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+
+}
+
+.place-card {
+    min-width: 30%;
+    max-width: 30%;
+    min-height: 250px;
+    margin: 30px 15px;
+    padding: 10px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 9px 15px -5px rgba(0,0,0,0.61);
+    -moz-box-shadow: 0px 9px 15px -5px rgba(0,0,0,0.61);
+    box-shadow: 0px 9px 15px -5px rgba(0,0,0,0.61);
+}
+
+.place-img {
+    width: 100%;
+    object-fit: fill;
+    height: 200px;
+    border-radius: 4px;
+}
+.place-card h6 {
+    margin: 10px 0 0;
+}
+
+.star-icon {
+    min-width: 30px;
+    max-width: 30px;
+    height: 30px;
+    background-size: cover;
+}
+
+.start-icon-row {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 50%;
+    justify-content: space-between;
+    margin: 15px 0 0;
+}
+
+.reviews-counts {
+    margin: 10px 0 0;
+    font-size: 20px;
+}
+
+.photos-row {
+    display: flex;
+    align-items: center;
+    margin: 15px 0 0;
+}
+.camera-img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.photos-size {
+    margin: 0;
+}
