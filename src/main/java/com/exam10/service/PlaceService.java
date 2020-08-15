@@ -43,4 +43,9 @@ public class PlaceService {
 
         return "redirect:/";
     }
+
+    public Page<PlaceDTO> getPlaceSearch(String text, Pageable pageable){
+        return placeRepository.findAllByName(text, pageable)
+                .map(PlaceDTO::from);
+    }
 }

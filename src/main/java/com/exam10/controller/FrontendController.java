@@ -105,4 +105,14 @@ public class FrontendController {
         model.addAttribute("user", user);
         return "pagePlace";
     }
+    @GetMapping("/search/{search}")
+    public String search(@PathVariable("search") String search, Model model, HttpServletRequest uriBuilder, Pageable pageable){
+        var place = placeService.getPlaceSearch(search, pageable);
+        var uri = uriBuilder.getRequestURI();
+        var placeModel = model.addAttribute("place",  placeService.getPlaceSearch(search, pageable).getContent());
+        PageableExample.constructPageable(place, propService.getDefaultPageSize(), placeModel, uri);
+        model.addAttribute("review", reviewRepository.findAll());
+
+        return "index";
+    }
 }
