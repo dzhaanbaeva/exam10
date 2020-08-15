@@ -16,10 +16,8 @@ import java.util.Set;
 
 @Service
 @AllArgsConstructor
-public class UserService implements UserDetailsService{
+public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
-
-
 
 
     @Override
@@ -33,31 +31,24 @@ public class UserService implements UserDetailsService{
         return user;
     }
 
-    public List<String> getRoles(){
+    public List<String> getRoles() {
         List<String> roles = new ArrayList<>();
         roles.add("Пользователь");
         return roles;
     }
 
-
-
-    public void updateUser(int id, String userRole, String fullName, String email){
-        if(userRepository.existsById(id)){
-            Set<Role> roles = getRole(userRole);
-            var user = userRepository.findById(id);
-            user.setFullName(fullName);
-            user.setEmail(email);
-            user.setRoles(roles);
+    public String addUser(String name, String email, String password) {
+        if (userRepository.existsByEmail(email)) {
+            return "/errors/error-already-have";
+        } else {
+            var user = User.builder()
+                    .email(email)
+                    .fullName(name)
+                    .password(password)
+                    .build();
             userRepository.save(user);
 
         }
-    }
-
-    private Set<Role> getRole(String user_role){
-        Set<Role> roles = new HashSet<>();
-        if(user_role.equals("Пользователь")){
-            roles.add(Role.USER);
-        }
-        return roles;
+        return "/login";
     }
 }

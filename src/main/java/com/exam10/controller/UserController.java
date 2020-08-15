@@ -72,20 +72,7 @@ public class UserController {
         return "single_employee";
     }
 
-    @PreAuthorize("hasAuthority('USER')")
-    @PostMapping("/change_employee")
-    public String changeEmployee(
-            @RequestParam(required = false, name = "user_role")String user_role,
-            @RequestParam("user_id") int id,
-            @RequestParam("fullname")String fullname, @RequestParam("email")String email,
-            Model model, HttpSession session,Principal principal
-    ) {
-        session.getId();
-        model.addAttribute("user", userRepository.findByEmail(principal.getName()));
-        model.addAttribute("roles", userRepository.findByEmail(principal.getName()).getRoles().toString());
-        userService.updateUser(id,user_role, fullname, email);
-        return "redirect:/employees";
-    }
+
 
 
 }
